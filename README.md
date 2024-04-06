@@ -79,3 +79,40 @@ Learn more about the power of Turborepo:
 - [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
 - [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
 - [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+
+
+
+# Local Setup
+
+A] Clone 
+
+B] Install Dep
+    Npm i in all Apps
+        - user-app
+        -merhcant-app
+        -ui
+        -root
+
+C] Add Env Variables (.env in packages/db, user-app)
+
+    1. packages/db
+        DATABASE_URL="postgresql://postgres:Abhijeet@1710@localhost:5432/postgres"
+
+    2. user-app
+        JWT_SECRET=test
+        NEXTAUTH_URL=http://localhost:3001
+
+D] DB Setup
+
+    password: Abhijeet@1710
+    imageName: postgres (Not sure)
+
+    1. Start Docker Image
+    - docker run -e POSTGRES_PASSWORD=password -d -p 5432:5432 imageName
+    - docker run -e POSTGRES_PASSWORD=Abhijeet@1710 -d -p 5432:5432 postgres
+    - .env : DATABASE_URL="postgresql://postgres:Abhijeet@1710@localhost:5432/postgres"
+
+    2. Migrate DB schema
+    - npx prisma migrate dev --name init
+    - npx prisma generate (Auto runs after first command)
+
